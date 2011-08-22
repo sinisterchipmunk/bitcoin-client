@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Date: Mon, 22 Aug 2011 00:22:27 +0000
+Connection: close
+Content-Length: 51
+Content-Type: application/json
+Server: bitcoin-json-rpc/0.3.24-beta
+
+{"result":0.00100000,"error":null,"id":"curltest"}

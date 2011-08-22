@@ -1,0 +1,8 @@
+HTTP/1.1 500 Internal Server Error
+Date: Sun, 21 Aug 2011 22:53:05 +0000
+Connection: close
+Content-Length: 183
+Content-Type: application/json
+Server: bitcoin-json-rpc/0.3.24-beta
+
+{"result":null,"error":{"code":-1,"message":"backupwallet <destination>\nSafely copies wallet.dat to destination, which can be a directory or a path with filename."},"id":"curltest"}

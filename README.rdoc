@@ -1,0 +1,79 @@
+= bitcoin-client
+
+Provides a Ruby library to the complete Bitcoin JSON-RPC API. Implements all methods listed
+at {https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list}[https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list].
+Also supports customizing the host and port number to connect to.
+
+
+== Usage
+
+As with most Ruby gems, you first need to require the library into your project:
+
+  require 'bitcoin'
+
+After doing this, the simplest possible usage looks like this:
+
+  Bitcoin('username', 'password').balance
+  # => 0.001
+
+Or, if you prefer a somewhat more explicit representation, the following code performs the exact
+same task:
+
+  client = Bitcoin::Client.new('username', 'password')
+  client.balance
+  # => 0.001
+  
+The third and final way to use the library is by taking advantage of a simple DSL:
+
+  include Bitcoin
+  
+  # set up credentials
+  username 'username'
+  password 'password'
+  
+  balance
+  # => 0.001
+  
+  accounts
+  # => {"account" => 0.001}
+  
+The RPC method names available to you are exactly the same as those listed on the Bitcoin wiki
+(again, that's {https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list}[https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list]). Some aliases
+have been added to make them more "ruby-ish," but none of the original names have been changed.
+
+
+== Host, Port and SSL
+
+Here are several examples of how you can change the host information:
+
+  Bitcoin('username', 'password', :host => 'example.com', :port => 38332, :ssl => true)
+  
+  client = Bitcoin::Client.new('username', 'password', :host => 'example.com')
+  client.port = 38332
+  client.ssl = true
+  client.ssl?
+  # => true
+  
+  include Bitcoin
+  host 'example.com'
+  port 38332
+  ssl?
+  # => false
+  ssl true
+  ssl?
+  # => true
+
+You should see the Bitcoin::Client class documentation if you'd like to see the other options and methods
+that are made available.
+
+
+== Donations
+
+If you found this library useful and feel inclined to compensate me for my trouble, I'm certainly not going to turn you down!
+
+Bitcoin donations can be sent to:
+
+  1HawYer58J9Vy3iju1w7jsRVci5tzaxkwn
+
+Thanks!
+

@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Date: Sun, 21 Aug 2011 23:20:10 +0000
+Connection: close
+Content-Length: 1078
+Content-Type: application/json
+Server: bitcoin-json-rpc/0.3.24-beta
+
+{"result":"backupwallet <destination>\ngetaccount <bitcoinaddress>\ngetaccountaddress <account>\ngetaddressesbyaccount <account>\ngetbalance [account] [minconf=1]\ngetblockcount\ngetblocknumber\ngetconnectioncount\ngetdifficulty\ngetgenerate\ngethashespersec\ngetinfo\ngetnewaddress [account]\ngetreceivedbyaccount <account> [minconf=1]\ngetreceivedbyaddress <bitcoinaddress> [minconf=1]\ngettransaction <txid>\ngetwork [data]\nhelp [command]\nlistaccounts [minconf=1]\nlistreceivedbyaccount [minconf=1] [includeempty=false]\nlistreceivedbyaddress [minconf=1] [includeempty=false]\nlisttransactions [account] [count=10] [from=0]\nmove <fromaccount> <toaccount> <amount> [minconf=1] [comment]\nsendfrom <fromaccount> <tobitcoinaddress> <amount> [minconf=1] [comment] [comment-to]\nsendmany <fromaccount> {address:amount,...} [minconf=1] [comment]\nsendtoaddress <bitcoinaddress> <amount> [comment] [comment-to]\nsetaccount <bitcoinaddress> <account>\nsetgenerate <generate> [genproclimit]\nsettxfee <amount>\nstop\nvalidateaddress <bitcoinaddress>","error":null,"id":"curltest"}
