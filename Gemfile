@@ -3,6 +3,10 @@ source "http://rubygems.org"
 # Specify your gem's dependencies in bitcoind-client.gemspec
 gemspec
 
-if RUBY_VERSION =~ /^1\.8/
+platforms :ruby_18 do
   gem 'json', '~> 1.5.3'
+end
+
+platforms :jruby do
+  gem 'jruby-openssl'
 end
