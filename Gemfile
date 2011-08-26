@@ -8,5 +8,6 @@ platforms :ruby_18 do
 end
 
 platforms :jruby do
+  gem 'json', '~> 1.5.3'
   gem 'jruby-openssl'
 end
