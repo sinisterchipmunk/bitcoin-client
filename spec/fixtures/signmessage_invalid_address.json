@@ -1,0 +1,8 @@
+HTTP/1.1 500 Internal Server Error
+Date: Sun, 26 Aug 2012 23:58:59 +0000
+Connection: close
+Content-Length: 80
+Content-Type: application/json
+Server: bitcoin-json-rpc/v0.6.3-beta
+
+{"result":null,"error":{"code":-3,"message":"Invalid address"},"id":"curltest"}

@@ -10,7 +10,7 @@ params = ARGV[2..-1].collect { |y| y == '_nil' ? nil : YAML::load(y) }
 file_name << ".json" unless file_name =~ /\.json$/
 
 data = { 'jsonrpc' => '1.0', 'id' => 'curltest', 'method' => service_name, 'params' => params }
-command = "curl --user cm4:H2na-92D --data-binary '#{data.to_json}' -H 'content-type: text/plain;' http://127.0.0.1:8332/ -i"
+command = "curl --user LovleOdnu:NajOij6DriWokEjEinaw --data-binary '#{data.to_json}' -H 'content-type: text/plain;' http://127.0.0.1:8332/ -i"
 
 puts command, nil
 result = %x[#{command}]
