@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_development_dependency "rake",    '~> 0.8.7'
-  s.add_development_dependency "bundler", '~> 1.0.18'
+  s.add_development_dependency "bundler"
   s.add_development_dependency "rspec",   '~> 2.6.0'
   s.add_development_dependency "fakeweb", '~> 1.3.0'
   s.add_runtime_dependency "rest-client", '~> 1.6.3'
