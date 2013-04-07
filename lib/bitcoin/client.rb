@@ -173,6 +173,10 @@ class Bitcoin::Client
     @api.request 'sendtoaddress', bitcoinaddress, amount, comment, comment_to
   end
 
+  def sendmany(fromaccount, addresses_amounts, minconf = 1, comment = nil)
+    @api.request 'sendmany', fromaccount, addresses_amounts, minconf, comment
+  end
+
   # Sets the account associated with the given address.
   def setaccount(bitcoinaddress, account)
     @api.request 'setaccoint', bitcoinaddress, account
@@ -229,6 +233,7 @@ class Bitcoin::Client
   alias list_transactions listtransactions
   alias send_from sendfrom
   alias send_to_address sendtoaddress
+  alias send_many sendmany
   alias account= setaccount
   alias set_account setaccount
   alias generate= setgenerate
