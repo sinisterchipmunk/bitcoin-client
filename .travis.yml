@@ -2,6 +2,7 @@ rvm:
   - 1.8.7
   - 1.9.2
   - 1.9.3
+  - 2.0.0
   - ree
   - jruby
   - ruby-head
@@ -10,3 +11,8 @@ rvm:
 matrix:
   allow_failures:
     - rvm: rbx-2.0
+    - rvm: jruby
+    - rvm: ruby-head
+    - rvm: 1.8.7
+    - rvm: ree
+    - rvm: 1.9.2
