@@ -115,7 +115,7 @@ describe Bitcoin::Client do
       context 'invalid address' do
         it "should produce the expected result" do
           lambda { result('invalid_address', 'message').should }.should \
-            raise_error RestClient::InternalServerError
+            raise_error Bitcoin::Errors::RPCError
         end
       end
     end
