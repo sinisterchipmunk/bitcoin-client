@@ -179,7 +179,7 @@ class Bitcoin::Client
 
   # Sets the account associated with the given address.
   def setaccount(bitcoinaddress, account)
-    @api.request 'setaccoint', bitcoinaddress, account
+    @api.request 'setaccount', bitcoinaddress, account
   end
 
   # +generate+ is true or false to turn generation on or off.
