@@ -34,6 +34,23 @@ describe Bitcoin::Client do
       end
     end
 
+    service 'getmininginfo' do
+      it "should produce the expected result" do
+        result.should == {
+          'blocks' => 237338,
+          'currentblocksize' => 0,
+          'currentblocktx' => 0,
+          'difficulty' => 11187257.46136079,
+          'errors' => "",
+          'generate' => false,
+          'genproclimit' => -1,
+          'hashespersec' => 0,
+          'pooledtx' => 0,
+          'testnet' => false
+        }
+      end
+    end
+
     service 'getblockcount' do
       it "should produce the expected result" do
         result.should == 141972
