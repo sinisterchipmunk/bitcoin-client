@@ -52,6 +52,13 @@ class Bitcoin::Client
     @api.request 'getblockbycount', height
   end
 
+  # Dumps the block existing with specified hash.
+  def getblock(hash)
+    block = @api.request 'getblock', hash
+    block["time"] = Time.at(block["time"]).utc
+    block
+  end
+
   # Returns the number of blocks in the longest block chain.
   def getblockcount
     @api.request 'getblockcount'

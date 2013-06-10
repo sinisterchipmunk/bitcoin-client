@@ -84,6 +84,11 @@ module Bitcoin::DSL
     bitcoin.getblockbycount height
   end
   
+  # Dumps the block existing with specified hash.
+  def getblock(hash)
+    bitcoin.getblock hash
+  end
+
   # Returns the number of blocks in the longest block chain.
   def getblockcount
     bitcoin.getblockcount

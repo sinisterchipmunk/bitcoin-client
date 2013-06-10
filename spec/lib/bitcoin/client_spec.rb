@@ -51,6 +51,29 @@ describe Bitcoin::Client do
       end
     end
 
+    service 'getblock' do
+      it "should produce the expected result" do
+        result("0000000000000002e004985f39f929d001448623b312185bf5e4ab50e5a8e60a").should == {
+          'hash' => "0000000000000002e004985f39f929d001448623b312185bf5e4ab50e5a8e60a",
+          'confirmations' => 19,
+          'size' => 5227,
+          'height' => 240707,
+          'version' => 2,
+          'merkleroot' => "18b914e2d6bd4c3118a936af75afbd230611edb6929a607302c0d591ef49b24e",
+          'tx' => [
+            "cutforsimplicity",
+            "27f99033bdcea87b07f8eea4279d7ce24e479fcb49e9f54e9ffb3721e29838ed"
+          ],
+          'time' => Time.utc(2013, 6, 10, 5, 40, 3),
+          'nonce' => 3937756309,
+          "bits" => "1a011337",
+          "difficulty" => 15605632.68128593,
+          "previousblockhash" => "000000000000003fa76b2abdd3036d183d7e24cfb6b543781d59cdca289f6053",
+          "nextblockhash" => "0000000000000087a1e962f618f757393930e58a745165033fc9d281b7bb568a"
+        }
+        end
+    end
+
     service 'getblockcount' do
       it "should produce the expected result" do
         result.should == 141972
