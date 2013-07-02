@@ -109,6 +109,12 @@ class Bitcoin::Client
     @api.request 'gettransaction', txid
   end
 
+  # Get raw transaction bout +txid+. It outputs the whole transaction chain by default in HEX. If you want JSON, set verbose to 1.
+  # When in the bitcoind config is set txindex=1, after reindexing, you can ask about any transaction (not included in your wallet), with this command.
+  def getrawtransaction(txid, verbose = 0)
+    @api.request 'getrawtransaction', txid, verbose
+  end
+
   # If +data+ is not specified, returns formatted hash data to work on:
   #
   #  :midstate => precomputed hash state after hashing the first half of the data
@@ -224,6 +230,7 @@ class Bitcoin::Client
   alias received_by_account getreceivedbyaccount
   alias received_by_address getreceivedbyaddress
   alias transaction gettransaction
+  alias rawtransaction getrawtransaction
   alias work getwork
   alias get_work getwork
   alias accounts listaccounts
