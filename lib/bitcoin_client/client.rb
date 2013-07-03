@@ -1,4 +1,4 @@
-class Bitcoin::Client
+class BitcoinClient::Client
   attr_reader :api
   def user; api.user; end
   def pass; api.pass; end
@@ -17,7 +17,7 @@ class Bitcoin::Client
   end
 
   def initialize(user, pass, options = {})
-    @api = Bitcoin::API.new({ :user => user, :pass => pass }.merge(options))
+    @api = BitcoinClient::API.new({ :user => user, :pass => pass }.merge(options))
   end
 
   # Safely copies wallet.dat to destination, which can be a directory or a path with filename.

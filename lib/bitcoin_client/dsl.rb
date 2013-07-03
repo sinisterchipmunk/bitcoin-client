@@ -1,9 +1,9 @@
-module Bitcoin::DSL
+module BitcoinClient::DSL
   def bitcoin
     if self.class.respond_to?(:bitcoin)
-      @client ||= Bitcoin::Client.new(self.class.bitcoin.user, self.class.bitcoin.pass, self.class.bitcoin.options)
+      @client ||= BitcoinClient::Client.new(self.class.bitcoin.user, self.class.bitcoin.pass, self.class.bitcoin.options)
     else
-      @client ||= Bitcoin::Client.new(nil, nil)
+      @client ||= BitcoinClient::Client.new(nil, nil)
     end
   end
   

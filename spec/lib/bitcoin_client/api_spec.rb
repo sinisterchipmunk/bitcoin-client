@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Bitcoin::API do
-  subject { Bitcoin::API.new(:user => $user, :pass => $pass) }
+describe BitcoinClient::API do
+  subject { BitcoinClient::API.new(:user => $user, :pass => $pass) }
   
   it "should have default host, port, ssl" do
     subject.host.should == 'localhost'
@@ -10,7 +10,7 @@ describe Bitcoin::API do
   end
   
   it "should accept host, port, ssl options" do
-    req = Bitcoin::API.new(:user => $user, :pass => $pass, :host => 'example.com', :port => 1234, :ssl => true)
+    req = BitcoinClient::API.new(:user => $user, :pass => $pass, :host => 'example.com', :port => 1234, :ssl => true)
     req.host.should == 'example.com'
     req.port.should == 1234
     req.ssl?.should be_true

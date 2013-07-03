@@ -1,4 +1,4 @@
-class Bitcoin::API
+class BitcoinClient::API
   attr_reader :options
   attr_reader :params
   
@@ -27,7 +27,7 @@ class Bitcoin::API
   end
   
   def request(service_name, *params)
-    req = Bitcoin::Request.new(service_name, params)
-    Bitcoin::RPC.new(to_hash).dispatch(req)
+    req = BitcoinClient::Request.new(service_name, params)
+    BitcoinClient::RPC.new(to_hash).dispatch(req)
   end
 end
