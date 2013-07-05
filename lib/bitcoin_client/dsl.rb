@@ -201,6 +201,11 @@ module BitcoinClient::DSL
   def move(fromaccount, toaccount, amount, minconf = 1, comment = nil)
     bitcoin.move fromaccount, toaccount, amount, minconf, comment
   end
+
+  # Return count transactions with <address> present in their scriptSig, skipping skip at the beginning. The ordering is oldest transaction first; if skip is negative the order returned is newest transaction first and skip+1 transactions are skipped. If verbose=0 only txids are returned rather than the full transactions.
+  def searchrawtransactions(txid, verbose=1, skip=0, count=100)
+    bitcoin.searchrawtransactions txid, verbose, skip, count
+  end
   
   # +amount+ is a real and is rounded to 8 decimal places. Returns the transaction ID if successful. 
   def sendfrom(fromaccount, tobitcoinaddress, amount, minconf = 1, comment = nil, comment_to = nil)
@@ -264,4 +269,5 @@ module BitcoinClient::DSL
   alias generate= setgenerate
   alias set_generate setgenerate
   alias validate_address validateaddress
+  alias search_raw_transactions searchrawtransactions
 end
