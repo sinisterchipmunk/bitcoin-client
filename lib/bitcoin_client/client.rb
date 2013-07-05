@@ -170,8 +170,8 @@ class BitcoinClient::Client
   end
 
   # Return count transactions with <address> present in their scriptSig, skipping skip at the beginning. The ordering is oldest transaction first; if skip is negative the order returned is newest transaction first and skip+1 transactions are skipped. If verbose=0 only txids are returned rather than the full transactions.
-  def searchrawtransactions(txid, verbose=1, skip=0, count=100)
-    @api.request 'searchrawtransactions', txid, verbose, skip, count
+  def searchrawtransactions(bitcoinaddress, verbose=1)
+    @api.request 'searchrawtransactions', bitcoinaddress, verbose
   end
 
   # +amount+ is a real and is rounded to 8 decimal places. Returns the transaction ID if successful.
