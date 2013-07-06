@@ -148,6 +148,11 @@ module BitcoinClient::DSL
     bitcoin.getrawtransaction txid verbose
   end
 
+  # Gets all mempool txs (pedning/waiting to be added in a block)
+  def getrawmempool
+    bitcoin.getrawmempool
+  end
+
   # If +data+ is not specified, returns formatted hash data to work on:
   #
   #  :midstate => precomputed hash state after hashing the first half of the data
@@ -270,4 +275,5 @@ module BitcoinClient::DSL
   alias set_generate setgenerate
   alias validate_address validateaddress
   alias search_raw_transactions searchrawtransactions
+  alias raw_mempool getrawmempool
 end

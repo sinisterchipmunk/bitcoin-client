@@ -115,6 +115,10 @@ class BitcoinClient::Client
     @api.request 'getrawtransaction', txid, verbose
   end
 
+  # Gets all mempool txs (pedning/waiting to be added in a block)
+  def getrawmempool
+     @api.request 'getrawmempool'
+  end
   # If +data+ is not specified, returns formatted hash data to work on:
   #
   #  :midstate => precomputed hash state after hashing the first half of the data
@@ -254,4 +258,5 @@ class BitcoinClient::Client
   alias sign_message signmessage
   alias verify_message verifymessage
   alias search_raw_transactions searchrawtransactions
+  alias raw_mempool getrawmempool
 end
