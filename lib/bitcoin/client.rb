@@ -208,6 +208,19 @@ class Bitcoin::Client
     @api.request 'verifymessage', bitcoinaddress, signature, message
   end
 
+  # Stores the wallet decryption key in memory for +timeout+ seconds.
+  def walletpassphrase(passphrase, timeout)
+    @api.request 'walletpassphrase', passphrase, timeout
+  end
+
+  # Removes the wallet encryption key from memory, locking the wallet.
+  # After calling this method, you will need to call walletpassphrase again
+  # before being able to call any methods which require the wallet to be
+  # unlocked.
+  def walletlock
+    @api.request 'walletlock'
+  end
+
   alias account getaccount
   alias account_address getaccountaddress
   alias addresses_by_account getaddressesbyaccount
