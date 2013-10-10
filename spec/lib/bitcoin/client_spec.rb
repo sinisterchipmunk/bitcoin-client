@@ -8,7 +8,7 @@ describe Bitcoin::Client do
     subject.pass.should == $pass
     subject.host.should == 'localhost'
     subject.port.should == 8332
-    subject.ssl?.should_not be_true
+    subject.should_not be_ssl
   end
 
   context "RPC" do
@@ -102,6 +102,13 @@ describe Bitcoin::Client do
             'amount' => 0.001,
             'confirmations' => 180}]
         end
+      end
+    end
+
+    service 'setaccount' do
+      it 'maps the call correctly' do
+        subject.api.should_receive(:request).with(*%w(setaccount bitcoinaddress account))
+        result('bitcoinaddress', 'account').should be_nil
       end
     end
 
