@@ -1,4 +1,4 @@
-= bitcoin-client
+= bitcoin-client {<img src="https://travis-ci.org/sinisterchipmunk/bitcoin-client.png?branch=master" alt="Build Status" />}[https://travis-ci.org/sinisterchipmunk/bitcoin-client] {<img src="https://codeclimate.com/github/sinisterchipmunk/bitcoin-client.png" />}[https://codeclimate.com/github/sinisterchipmunk/bitcoin-client] {<img src="https://coveralls.io/repos/sinisterchipmunk/bitcoin-client/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/sinisterchipmunk/bitcoin-client]
 
 Provides a Ruby library to the complete Bitcoin JSON-RPC API. Implements all methods listed
 at {https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list}[https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list].
