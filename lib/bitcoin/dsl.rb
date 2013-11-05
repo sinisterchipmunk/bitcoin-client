@@ -84,6 +84,11 @@ module Bitcoin::DSL
     bitcoin.getblockbycount height
   end
   
+  # Dumps the block existing with specified hash.
+  def getblock(hash)
+    bitcoin.getblock hash
+  end
+
   # Returns the number of blocks in the longest block chain.
   def getblockcount
     bitcoin.getblockcount
@@ -118,7 +123,12 @@ module Bitcoin::DSL
   def getinfo
     bitcoin.getinfo
   end
-    
+
+  # Returns an object containing various mining info.
+  def getmininginfo
+    bitcoin.getmininginfo
+  end
+
   # Returns a new bitcoin address for receiving payments. If +account+ is specified (recommended),
   # it is added to the address book so payments received with the address will be credited to +account+.
   def getnewaddress(account = nil)
@@ -238,6 +248,7 @@ module Bitcoin::DSL
   alias generate? getgenerate
   alias hashes_per_sec gethashespersec
   alias info getinfo
+  alias mininginfo getmininginfo
   alias new_address getnewaddress
   alias received_by_account getreceivedbyaccount
   alias received_by_address getreceivedbyaddress
