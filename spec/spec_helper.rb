@@ -11,8 +11,8 @@ require File.expand_path('../lib/bitcoin-client', File.dirname(__FILE__))
 
 Dir[File.expand_path("support/**/*.rb", File.dirname(__FILE__))].each { |f| require f }
 
-FakeWeb.allow_net_connect = false
-
 RSpec.configure do |c|
   c.include FixturesHelper
+  c.before { FakeWeb.allow_net_connect = false }
+  c.after  { FakeWeb.allow_net_connect = true  }
 end
