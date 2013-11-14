@@ -3,6 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "bitcoin/version"
 
 Gem::Specification.new do |s|
+  s.licenses    = [ 'MIT' ]
   s.name        = "bitcoin-client"
   s.version     = Bitcoin::VERSION
   s.authors     = ["Colin MacKenzie IV"]
