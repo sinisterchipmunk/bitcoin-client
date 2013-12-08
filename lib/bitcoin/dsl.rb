@@ -196,8 +196,8 @@ module Bitcoin::DSL
   end
   
   # Returns up to +count+ most recent transactions for account +account+. 
-  def listtransactions(account, count = 10)
-    bitcoin.listtransactions account, count
+  def listtransactions(account = '', count = 10, from = 0)
+    bitcoin.listtransactions account, count, from
   end
   
   # Move from one account in your wallet to another. 
