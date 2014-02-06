@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "bitcoin/version"
+require "bitcoin-client/version"
 
 Gem::Specification.new do |s|
   s.licenses    = [ 'MIT' ]
