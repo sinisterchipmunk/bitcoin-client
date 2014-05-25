@@ -1,1 +1,0 @@
-require File.expand_path("bitcoin_client", File.dirname(__FILE__))
