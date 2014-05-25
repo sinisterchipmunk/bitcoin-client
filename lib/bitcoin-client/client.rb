@@ -206,6 +206,12 @@ class BitcoinClient::Client
     @api.request 'listtransactions', account, count, from
   end
 
+  # Returns transactions since <hash> block
+  def listsinceblock(hash)
+    @api.request 'listsinceblock', hash
+  end
+
+
   # Move from one account in your wallet to another.
   def move(fromaccount, toaccount, amount, minconf = 1, comment = nil)
     @api.request 'move', fromaccount, toaccount, amount, minconf, comment
