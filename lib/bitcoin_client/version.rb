@@ -1,4 +1,4 @@
-module Bitcoin
+module BitcoinClient
   module Version
     MAJOR = 0
     MINOR = 0

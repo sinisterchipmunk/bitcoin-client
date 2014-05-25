@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Bitcoin::Client do
-  subject { Bitcoin::Client.new($user, $pass) }
+describe BitcoinClient::Client do
+  subject { BitcoinClient::Client.new($user, $pass) }
 
   it "defaults" do
     subject.user.should == $user
@@ -162,7 +162,7 @@ describe Bitcoin::Client do
       context 'invalid address' do
         it "should produce the expected result" do
           lambda { result('invalid_address', 'message').should }.should \
-            raise_error Bitcoin::Errors::RPCError
+            raise_error BitcoinClient::Errors::RPCError
         end
       end
     end
