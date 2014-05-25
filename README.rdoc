@@ -18,23 +18,23 @@ Or, if you're using Bundler (and you should be), just add it to the Gemfile:
 
 As with most Ruby gems, you first need to require the library into your project:
 
-  require 'bitcoin'
+  require 'bitcon_client'
 
 After doing this, the simplest possible usage looks like this:
 
-  Bitcoin('username', 'password').balance
+  BitcoinClient('username', 'password').balance
   # => 0.001
 
 Or, if you prefer a somewhat more explicit representation, the following code performs the exact
 same task:
 
-  client = Bitcoin::Client.new('username', 'password')
+  client = BitcoinClient::Client.new('username', 'password')
   client.balance
   # => 0.001
   
 The third and final way to use the library is by taking advantage of a simple DSL:
 
-  include Bitcoin
+  include BitcoinClient
   
   # set up credentials
   username 'username'
@@ -55,15 +55,15 @@ have been added to make them more "ruby-ish," but none of the original names hav
 
 Here are several examples of how you can change the host information:
 
-  Bitcoin('username', 'password', :host => 'example.com', :port => 38332, :ssl => true)
+  BitcoinClient('username', 'password', :host => 'example.com', :port => 38332, :ssl => true)
   
-  client = Bitcoin::Client.new('username', 'password', :host => 'example.com')
+  client = BitcoinClient::Client.new('username', 'password', :host => 'example.com')
   client.port = 38332
   client.ssl = true
   client.ssl?
   # => true
   
-  include Bitcoin
+  include BitcoinClient
   host 'example.com'
   port 38332
   ssl?
@@ -72,7 +72,7 @@ Here are several examples of how you can change the host information:
   ssl?
   # => true
 
-You should see the Bitcoin::Client class documentation if you'd like to see the other options and methods
+You should see the BitcoinClient::Client class documentation if you'd like to see the other options and methods
 that are made available.
 
 

@@ -1,4 +1,4 @@
-class Bitcoin::Client
+class BitcoinClient::Client
   attr_reader :api
   def user; api.user; end
   def pass; api.pass; end
@@ -17,7 +17,7 @@ class Bitcoin::Client
   end
 
   def initialize(user, pass, options = {})
-    @api = Bitcoin::API.new({ :user => user, :pass => pass }.merge(options))
+    @api = BitcoinClient::API.new({ :user => user, :pass => pass }.merge(options))
   end
 
   # Safely copies wallet.dat to destination, which can be a directory or a path with filename.
@@ -142,6 +142,16 @@ class Bitcoin::Client
     @api.request 'gettransaction', txid
   end
 
+  # Get raw transaction bout +txid+. It outputs the whole transaction chain by default in HEX. If you want JSON, set verbose to 1.
+  # When in the bitcoind config is set txindex=1, after reindexing, you can ask about any transaction (not included in your wallet), with this command.
+  def getrawtransaction(txid, verbose = 0)
+    @api.request 'getrawtransaction', txid, verbose
+  end
+
+  # Gets all mempool txs (pedning/waiting to be added in a block)
+  def getrawmempool
+     @api.request 'getrawmempool'
+  end
   # If +data+ is not specified, returns formatted hash data to work on:
   #
   #  :midstate => precomputed hash state after hashing the first half of the data
@@ -199,6 +209,11 @@ class Bitcoin::Client
   # Move from one account in your wallet to another.
   def move(fromaccount, toaccount, amount, minconf = 1, comment = nil)
     @api.request 'move', fromaccount, toaccount, amount, minconf, comment
+  end
+
+  # Return count transactions with <address> present in their scriptSig, skipping skip at the beginning. The ordering is oldest transaction first; if skip is negative the order returned is newest transaction first and skip+1 transactions are skipped. If verbose=0 only txids are returned rather than the full transactions.
+  def searchrawtransactions(bitcoinaddress, verbose=1)
+    @api.request 'searchrawtransactions', bitcoinaddress, verbose
   end
 
   # +amount+ is a real and is rounded to 8 decimal places. Returns the transaction ID if successful.
@@ -285,6 +300,7 @@ class Bitcoin::Client
   alias received_by_account getreceivedbyaccount
   alias received_by_address getreceivedbyaddress
   alias transaction gettransaction
+  alias rawtransaction getrawtransaction
   alias work getwork
   alias get_work getwork
   alias accounts listaccounts
@@ -302,4 +318,6 @@ class Bitcoin::Client
   alias validate_address validateaddress
   alias sign_message signmessage
   alias verify_message verifymessage
+  alias search_raw_transactions searchrawtransactions
+  alias raw_mempool getrawmempool
 end

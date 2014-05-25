@@ -1,9 +1,9 @@
-module Bitcoin::DSL
+module BitcoinClient::DSL
   def bitcoin
     if self.class.respond_to?(:bitcoin)
-      @client ||= Bitcoin::Client.new(self.class.bitcoin.user, self.class.bitcoin.pass, self.class.bitcoin.options)
+      @client ||= BitcoinClient::Client.new(self.class.bitcoin.user, self.class.bitcoin.pass, self.class.bitcoin.options)
     else
-      @client ||= Bitcoin::Client.new(nil, nil)
+      @client ||= BitcoinClient::Client.new(nil, nil)
     end
   end
   
@@ -156,6 +156,18 @@ module Bitcoin::DSL
     bitcoin.gettransaction txid
   end
   
+
+  # Get raw transaction bout +txid+. It outputs the whole transaction chain by default in HEX. If you want JSON, set verbose to 1.
+  # When in the bitcoind config is set txindex=1, after reindexing, you can ask about any transaction (not included in your wallet), with this command.
+  def getrawtransaction(txid, verbose = 0)
+    bitcoin.getrawtransaction txid verbose
+  end
+
+  # Gets all mempool txs (pedning/waiting to be added in a block)
+  def getrawmempool
+    bitcoin.getrawmempool
+  end
+
   # If +data+ is not specified, returns formatted hash data to work on:
   #
   #  :midstate => precomputed hash state after hashing the first half of the data
@@ -209,6 +221,11 @@ module Bitcoin::DSL
   def move(fromaccount, toaccount, amount, minconf = 1, comment = nil)
     bitcoin.move fromaccount, toaccount, amount, minconf, comment
   end
+
+  # Return count transactions with <address> present in their scriptSig, skipping skip at the beginning. The ordering is oldest transaction first; if skip is negative the order returned is newest transaction first and skip+1 transactions are skipped. If verbose=0 only txids are returned rather than the full transactions.
+  def searchrawtransactions(bitcoinaddress, verbose=1)
+    bitcoin.searchrawtransactions bitcoinaddress, verbose
+  end
   
   # +amount+ is a real and is rounded to 8 decimal places. Returns the transaction ID if successful. 
   def sendfrom(fromaccount, tobitcoinaddress, amount, minconf = 1, comment = nil, comment_to = nil)
@@ -259,6 +276,7 @@ module Bitcoin::DSL
   alias received_by_account getreceivedbyaccount
   alias received_by_address getreceivedbyaddress
   alias transaction gettransaction
+  alias rawtransaction getrawtransaction  
   alias work getwork
   alias get_work getwork
   alias accounts listaccounts
@@ -273,4 +291,6 @@ module Bitcoin::DSL
   alias generate= setgenerate
   alias set_generate setgenerate
   alias validate_address validateaddress
+  alias search_raw_transactions searchrawtransactions
+  alias raw_mempool getrawmempool
 end

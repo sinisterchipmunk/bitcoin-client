@@ -1,6 +1,6 @@
 require 'rest_client'
 
-class Bitcoin::RPC
+class BitcoinClient::RPC
   def initialize(options)
     @user, @pass = options[:user], options[:pass]
     @host, @port = options[:host], options[:port]
@@ -25,7 +25,7 @@ class Bitcoin::RPC
   def dispatch(request)
     RestClient.post(service_url, request.to_post_data, content_type: :json) do |respdata, request, result|
       response = JSON.parse(respdata)
-      raise Bitcoin::Errors::RPCError, response['error'] if response['error']
+      raise BitcoinClient::Errors::RPCError, response['error'] if response['error']
       response['result']
     end
   end

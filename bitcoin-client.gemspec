@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "bitcoin/version"
+require "bitcoin_client/version"
 
 Gem::Specification.new do |s|
   s.licenses    = [ 'MIT' ]
   s.name        = "bitcoin-client"
-  s.version     = Bitcoin::VERSION
+  s.version     = BitcoinClient::VERSION
   s.authors     = ["Colin MacKenzie IV"]
   s.email       = ["sinisterchipmunk@gmail.com"]
   s.homepage    = "http://github.com/sinisterchipmunk/bitcoin-client"
