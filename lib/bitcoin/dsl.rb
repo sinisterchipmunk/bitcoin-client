@@ -98,6 +98,11 @@ module Bitcoin::DSL
   def getblocknumber
     bitcoin.getblocknumber
   end
+
+  # Returns hash of block in best-block-chain at <index>; index 0 is the genesis block
+  def getblockhash(index)
+    bitcoin.getblockhash index
+  end
   
   # Returns the number of connections to other nodes.
   def getconnectioncount
@@ -243,6 +248,7 @@ module Bitcoin::DSL
   alias block_by_count getblockbycount
   alias block_count getblockcount
   alias block_number getblocknumber
+  alias block_hash getblockhash
   alias connection_count getconnectioncount
   alias difficulty getdifficulty
   alias generate? getgenerate
