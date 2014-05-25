@@ -25,6 +25,22 @@ class Bitcoin::Client
     @api.request 'backupwallet', destination
   end
 
+  # Creates a multi-signature address and returns a json object
+  def createmultisig(nrequired, keys)
+      @api.request 'createmultisig', nrequired, keys
+  end
+
+  # nCreate a transaction spending given inputs
+  # (array of objects containing transaction id and output number), sending to given address(es)
+  def createrawtransaction(transactionid = nil, address_amount)
+      @api.request 'createrawtransaction', transactionid, address_amount
+  end
+
+  # Return a JSON object representing the serialized, hex-encoded transaction.
+  def decoderawtransaction(hexstring)
+      @api.request 'decoderawtransaction', hexstring
+  end
+
   # Returns the account associated with the given address.
   def getaccount(bitcoinaddress)
     @api.request 'getaccount', bitcoinaddress
@@ -142,6 +158,11 @@ class Bitcoin::Client
   def help(command = nil)
     @api.request 'help', command
   end
+  
+  # Adds a private key (as returned by dumpprivkey) to your wallet.
+  def importprivkey(bitcoinprivkey, label = nil, rescan = true)
+    @api.request 'importprivkey', bitcoinprivkey, label, rescan
+  end
 
   # Returns Object that has account names as keys, account balances as values.
   def listaccounts(minconf = 1)
@@ -185,6 +206,10 @@ class Bitcoin::Client
     @api.request 'sendfrom', fromaccount, tobitcoinaddress, amount, minconf, comment, comment_to
   end
 
+  # Submits raw transaction (serialized, hex-encoded) to local node and network.
+  def sendrawtransaction(hexstring)
+    @api.request 'sendrawtransaction', hexstring
+  end
   # +amount+ is a real and is rounded to 8 decimal places
   def sendtoaddress(bitcoinaddress, amount, comment = nil, comment_to = nil)
     @api.request 'sendtoaddress', bitcoinaddress, amount, comment, comment_to
@@ -205,6 +230,11 @@ class Bitcoin::Client
     @api.request 'setgenerate', generate, genproclimit
   end
 
+  # Sign inputs for raw transaction (serialized, hex-encoded).
+  def signrawtransaction(hexstring, transaction = nil, privatekey =nil, sighashtype = "ALL")
+    @api.request 'signrawtransaction', hexstring, transaction, privatekey, sighashtype  
+  end
+  
   # Stop bitcoin server.
   def stop
     @api.request 'stop'
