@@ -171,8 +171,8 @@ class Bitcoin::Client
   end
 
   # Returns up to +count+ most recent transactions for account +account+.
-  def listtransactions(account, count = 10)
-    @api.request 'listtransactions', account, count
+  def listtransactions(account = '' , count = 10, from = 0)
+    @api.request 'listtransactions', account, count, from
   end
 
   # Move from one account in your wallet to another.
