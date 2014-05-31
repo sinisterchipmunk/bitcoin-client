@@ -177,7 +177,7 @@ class BitcoinClient::Client
   def help(command = nil)
     @api.request 'help', command
   end
-
+  
   # Adds a private key (as returned by dumpprivkey) to your wallet.
   def importprivkey(bitcoinprivkey, label = nil, rescan = true)
     @api.request 'importprivkey', bitcoinprivkey, label, rescan
@@ -262,9 +262,9 @@ class BitcoinClient::Client
 
   # Sign inputs for raw transaction (serialized, hex-encoded).
   def signrawtransaction(hexstring, transaction = nil, privatekey =nil, sighashtype = "ALL")
-    @api.request 'signrawtransaction', hexstring, transaction, privatekey, sighashtype
+    @api.request 'signrawtransaction', hexstring, transaction, privatekey, sighashtype  
   end
-
+  
   # Stop bitcoin server.
   def stop
     @api.request 'stop'
@@ -302,6 +302,7 @@ class BitcoinClient::Client
   alias account_address getaccountaddress
   alias addresses_by_account getaddressesbyaccount
   alias balance getbalance
+  alias bestblockhash getbestblockhash
   alias block_by_count getblockbycount
   alias block_count getblockcount
   alias block_number getblocknumber
