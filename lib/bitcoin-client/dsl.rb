@@ -77,6 +77,11 @@ module BitcoinClient::DSL
   def getbalance(account = nil, minconf = 1)
     bitcoin.getbalance account, minconf
   end
+
+  # Returns the hash of the best (tip) block in the longest block chain.
+  def getbestblockhash
+    bitcoin.getbestblockhash
+  end
   
   # Dumps the block existing at specified height.
   # Note: this is not available in the official release

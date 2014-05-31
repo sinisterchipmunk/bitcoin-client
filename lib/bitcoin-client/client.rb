@@ -62,6 +62,10 @@ class BitcoinClient::Client
     @api.request 'getbalance', account, minconf
   end
 
+  def getbestblockhash
+    @api.request 'getbestblockhash'
+  end
+
   # Dumps the block existing at specified height.
   # Note: this is not available in the official release
   def getblockbycount(height)
@@ -298,6 +302,7 @@ class BitcoinClient::Client
   alias account_address getaccountaddress
   alias addresses_by_account getaddressesbyaccount
   alias balance getbalance
+  alias bestblockhash getbestblockhash
   alias block_by_count getblockbycount
   alias block_count getblockcount
   alias block_number getblocknumber
