@@ -18,7 +18,7 @@ Or, if you're using Bundler (and you should be), just add it to the Gemfile:
 
 As with most Ruby gems, you first need to require the library into your project:
 
-  require 'bitcon_client'
+  require 'bitcoin-client'
 
 After doing this, the simplest possible usage looks like this:
 
