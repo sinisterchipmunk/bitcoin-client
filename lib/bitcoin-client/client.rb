@@ -178,6 +178,11 @@ class BitcoinClient::Client
     @api.request 'help', command
   end
   
+  # Adds an address or script (in hex) that can be watched as if it were in your wallet but cannot be used to spend.
+  def importaddress(address, label = nil, rescan = true)
+    @api.request 'importaddress', address, label, rescan
+  end
+
   # Adds a private key (as returned by dumpprivkey) to your wallet.
   def importprivkey(bitcoinprivkey, label = nil, rescan = true)
     @api.request 'importprivkey', bitcoinprivkey, label, rescan
