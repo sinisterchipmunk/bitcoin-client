@@ -183,6 +183,11 @@ class BitcoinClient::Client
     @api.request 'importprivkey', bitcoinprivkey, label, rescan
   end
 
+  # Reveals the private key corresponding to an address.
+  def dumpprivkey(bitcoinaddress)
+    @api.request 'dumpprivkey', bitcoinaddress
+  end
+
   # Returns Object that has account names as keys, account balances as values.
   def listaccounts(minconf = 1)
     @api.request 'listaccounts', minconf
