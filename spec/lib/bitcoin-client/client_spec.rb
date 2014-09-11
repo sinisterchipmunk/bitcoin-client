@@ -100,7 +100,7 @@ describe BitcoinClient::Client do
 
     service 'getgenerate' do
       it "should produce the expected result" do
-        result.should be_false
+        result.should == false
       end
     end
 
@@ -170,13 +170,13 @@ describe BitcoinClient::Client do
     service 'verifymessage' do
       context 'success' do
         it "should produce the expected result" do
-          result('address', 'message', 'signature').should be_true
+          result('address', 'message', 'signature').should == true
         end
       end
 
       context 'failure' do
         it "should produce the expected result" do
-          result('address', 'message', 'signature').should be_false
+          result('address', 'message', 'signature').should == false
         end
       end
     end

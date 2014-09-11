@@ -6,14 +6,14 @@ describe BitcoinClient::API do
   it "should have default host, port, ssl" do
     subject.host.should == 'localhost'
     subject.port.should == 8332
-    subject.ssl?.should be_false
+    subject.ssl?.should == false
   end
   
   it "should accept host, port, ssl options" do
     req = BitcoinClient::API.new(:user => $user, :pass => $pass, :host => 'example.com', :port => 1234, :ssl => true)
     req.host.should == 'example.com'
     req.port.should == 1234
-    req.ssl?.should be_true
+    req.ssl?.should == true
   end
   
   it "should build an options hash" do
