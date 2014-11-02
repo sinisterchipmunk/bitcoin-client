@@ -18,7 +18,7 @@ Or, if you're using Bundler (and you should be), just add it to the Gemfile:
 
 As with most Ruby gems, you first need to require the library into your project:
 
-  require 'bitcon_client'
+  require 'bitcoin-client'
 
 After doing this, the simplest possible usage looks like this:
 
@@ -31,21 +31,21 @@ same task:
   client = BitcoinClient::Client.new('username', 'password')
   client.balance
   # => 0.001
-  
+
 The third and final way to use the library is by taking advantage of a simple DSL:
 
   include BitcoinClient
-  
+
   # set up credentials
   username 'username'
   password 'password'
-  
+
   balance
   # => 0.001
-  
+
   accounts
   # => {"account" => 0.001}
-  
+
 The RPC method names available to you are exactly the same as those listed on the Bitcoin wiki
 (again, that's {https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list}[https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list]). Some aliases
 have been added to make them more "ruby-ish," but none of the original names have been changed.
@@ -56,13 +56,13 @@ have been added to make them more "ruby-ish," but none of the original names hav
 Here are several examples of how you can change the host information:
 
   BitcoinClient('username', 'password', :host => 'example.com', :port => 38332, :ssl => true)
-  
+
   client = BitcoinClient::Client.new('username', 'password', :host => 'example.com')
   client.port = 38332
   client.ssl = true
   client.ssl?
   # => true
-  
+
   include BitcoinClient
   host 'example.com'
   port 38332
